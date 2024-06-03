@@ -86,3 +86,10 @@ export type InvoiceForm = {
   amount: number;
   status: 'pending' | 'paid';
 };
+
+export interface ParagraphData {
+  id: string;
+  paragraph: string;
+  options: string[][];
+  correctAnswers: string[];
+}
