@@ -1,5 +1,4 @@
 import React from 'react';
-import SelectableText from './SelectableText';
 import { ParagraphData } from '@/app/lib/definitions';
 import HighlightedText from './HighlightedText';
 
@@ -7,7 +6,7 @@ interface ParagraphWithSelectableTextProps {
   data: ParagraphData;
 }
 
-const ParagraphWithSelectableText: React.FC<ParagraphWithSelectableTextProps> = ({ data }) => {
+const ParagraphAnswers: React.FC<ParagraphWithSelectableTextProps> = ({ data }) => {
   const { paragraph, options, correctAnswers } = data;
 
   // Split the paragraph by the placeholder "__"
@@ -20,17 +19,14 @@ const ParagraphWithSelectableText: React.FC<ParagraphWithSelectableTextProps> = 
           {part}
           {index < options.length && (
             <>
-              <SelectableText options={options[index]} correctAnswer={correctAnswers[index]} />             
+              <HighlightedText text={correctAnswers[index]} isCorrect={true} />
+              <HighlightedText text={correctAnswers[index]} isCorrect={false} isStrikethrough={true} />
             </>
           )}
         </React.Fragment>
       ))}
-
-      <br/>
-      <br/>
-
     </p>
   );
 };
 
-export default ParagraphWithSelectableText;
+export default ParagraphAnswers;
